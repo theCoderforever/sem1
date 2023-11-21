@@ -73,7 +73,7 @@ return [
             'subModule' => [
                 [
                     'title' => "QL Banner",
-                    'route' => "order/index"
+                    'route' => "banner/index"
                 ],
               
                

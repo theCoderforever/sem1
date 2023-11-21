@@ -297,65 +297,34 @@
         <main class="main">
             <section class="home-slider-container">
                 <div class="home-slider owl-carousel with-dots-container" data-owl-options="{'nav': false}">
+                    @foreach($banner as $key)
                     <div class="home-slide home-slide1 banner" style="background-color: #111">
                         <div class="slide-bg" src="assets/images/demoes/demo18/slider/home-slide-back.jpg"></div>
                         <!-- End .slide-bg !-->
                         <ul class="slide-bg scene" style="width: 100%; height: 100%;">
-                            <li class="layer" data-depth="0.05"><img src="assets/images/demoes/demo18/slider/white-shoes.png" alt="" /></li>
+                            <li class="layer" data-depth="0.05"><img src="{{asset('/storage/image/'.$key->image)}}"alt=""></li>
                             <li class="layer" data-depth="0.06"><img style="position: absolute; top: 31%; left: 46.5%;" src="assets/images/demoes/demo18/slider/blurflake1.png" alt="" /></li>
                             <li class="layer" data-depth="0.07"><img class="animation-spin" style="position: absolute; top: 25%; left: 66%;" src="assets/images/demoes/demo18/slider/blurflake2.png" alt="" /></li>
                             <li class="layer" data-depth="0.10"><img class="animation-wave" style="position: absolute; top: 50%; left: 80%;" src="assets/images/demoes/demo18/slider/blurflake3.png" alt="" /></li>
                             <li class="layer" data-depth="0.15"><img style="position: absolute; top: 70%; left: 55%;" src="assets/images/demoes/demo18/slider/blurflake4.png" alt="" /></li>
                         </ul>
-                        <div class="home-slide-content">
-                            <h2 class="text-white text-transform-uppercase line-height-1">Spring / Summer Season</h2>
-                            <h3 class="text-white d-inline-block line-height-1 ls-0 text-center">up<br /> to
-                            </h3>
-                            <h4 class="text-white text-uppercase line-height-1 d-inline-block">50% off</h4>
-                            <div></div>
-                            <h5 class="float-left text-white text-uppercase line-height-1 ls-n-20">Starting At</h5>
-                            <h6 class="float-left coupon-sale-text line-height-1 ls-n-20 font-weight-bold text-secondary">
-                                <sup>$</sup>19<sup>99</sup></h6>
-                            <a href="{{route('shop.index')}}" class="btn btn-light d-inline-block">Shop Now</a>
-                        </div>
+                        
                         <!-- End .home-slide-content -->
                     </div>
+                    @endforeach
                     <!-- End .home-slide -->
 
-                    <div class="home-slide home-slide2 banner" style="background-color: #111;">
-                        <div class="slide-bg" src="assets/images/demoes/demo18/slider/home-slide-back.jpg" style="transform: scaleX(-1);"></div>
-                        <!-- End .slide-bg !-->
-                        <ul class="slide-bg scene" style="width: 100%; height: 100%;">
-                            <li class="layer" data-depth="0.05"><img src="assets/images/demoes/demo18/slider/ball2.png" alt="" /></li>
-                            <li class="layer" data-depth="0.06"><img style="position: absolute; top: 70%; left: 42%;" src="assets/images/demoes/demo18/slider/blurflake1.png" alt="" /></li>
-                            <li class="layer" data-depth="0.07"><img class="animation-spin" style="position: absolute; top: 25%; left: 45%;" src="assets/images/demoes/demo18/slider/blurflake2.png" alt="" /></li>
-                            <li class="layer" data-depth="0.10"><img class="animation-wave" style="position: absolute; top: 49%; left: 21%;" src="assets/images/demoes/demo18/slider/blurflake3.png" alt="" /></li>
-                            <li class="layer" data-depth="0.15"><img style="position: absolute; top: 25%; left: 23%;" src="assets/images/demoes/demo18/slider/blurflake4.png" alt="" /></li>
-                        </ul>
-                        <div class="home-slide-content">
-                            <h2 class="text-white text-transform-uppercase line-height-1">Spring / Summer Season</h2>
-                            <h3 class="text-white d-inline-block line-height-1 ls-0 text-center">up<br /> to
-                            </h3>
-                            <h4 class="text-white text-uppercase line-height-1 d-inline-block">50% off</h4>
-                            <div></div>
-                            <h5 class="float-left text-white text-uppercase line-height-1 ls-n-20">Starting At</h5>
-                            <h6 class="float-left coupon-sale-text line-height-1 ls-n-20 font-weight-bold text-secondary">
-                                <sup>$</sup>19<sup>99</sup></h6>
-                            <a href="{{route('shop.index')}}" class="btn btn-light d-inline-block">Shop Now</a>
-                        </div>
-                        <!-- End .home-slide-content -->
-                    </div>
+                    
                     <!-- End .home-slide -->
                 </div>
                 <!-- End .home-slider -->
 
                 <div class="home-slider-thumbs owl-dots">
+                    @foreach($banner as $key)
                     <a href="#" class="owl-dot">
-                        <img src="assets/images/demoes/demo18/slider/slide-1-thumb.jpg" alt="Slide Thumb">
+                        <img src="{{asset('/storage/image/'.$key->avatar)}}" alt="Slide Thumb">
                     </a>
-                    <a href="#" class="owl-dot">
-                        <img src="assets/images/demoes/demo18/slider/slide-2-thumb.jpg" alt="Slide Thumb">
-                    </a>
+                    @endforeach
                 </div>
                 <!-- End .home-slide-thumbs -->
             </section>
