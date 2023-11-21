@@ -186,6 +186,25 @@ return [
       
        
     ],
+
+
+    'banner' => [
+        'index' => [
+            'title' => "Quản Lý Banner",
+            'tableHeading' => "Danh sách Banner "
+        ],
+        'create' => [
+            'title' => 'Thêm mới Banner'
+        ],
+        'update' => [
+            'title' => 'Cập nhật Banner'
+        ],
+        'delete' => [
+            'title' => 'Xóa Banner'
+        ],
+      
+       
+    ],
     'parentid' => 'Chọn Danh Mục Cha',
     'parent_notice'=>'Chọn root nếu không có danh mục cha',
     'image' => 'Chọn ảnh đại diện',

@@ -1,0 +1,25 @@
+
+<div class="ibox">
+    <div class="ibox-title">
+        <h5 class="kd5">{{ __('messages.advance_config') }}</h5>
+    </div>
+    <div class="ibox-content">
+        <div class="row mb10">
+            <div class="col-lg-12">
+                <div class="form-row">
+
+                    <select name="publish" class="form-control setupSelect2" id="">
+                        @foreach (config('apps.general.publish') as $key => $val)
+                            <option
+                                {{ $key == old('publish', isset($catalogue->publish) ? $catalogue->publish : '') ? 'selected' : '' }}
+                                value="{{ $key }}">{{ $val }}</option>
+                        @endforeach
+                    </select>
+                    <div style="margin-top: 20px; margin-bottom: 20px"></div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

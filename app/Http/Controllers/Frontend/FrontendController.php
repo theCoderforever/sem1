@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Subscriber;
+use App\Models\Banner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,7 @@ class FrontendController extends Controller
 
     public function index()
     {
-
+        $banner = Banner::all();
         $products = Product::paginate(12);
         // dd(Auth::user());
         if(Auth::check()) {
@@ -28,7 +29,7 @@ class FrontendController extends Controller
         }
         // dd($sub);
        
-        return view('frontend.home.home', compact('products', 'sub'));
+        return view('frontend.home.home', compact('products', 'sub','banner'));
     }
 
     
