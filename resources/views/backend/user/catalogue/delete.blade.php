@@ -1,4 +1,4 @@
-@include('backend.dashboard.component.breadcrumb', ['title' => $config['seo']['create']['title']])
+@include('backend.dashboard.component.breadcrumb', ['title' => $config['seo']['delete']['title']])
 
 
 <form action="{{ route('user.catalogue.destroy', $userCatalogue->id) }}" method="post" class="box">
@@ -10,7 +10,7 @@
                 <div class="panel-head">
                     <div class="panel-title">Thông tin chung</div>
                     <div class="panel-description">
-                        <p>Bạn muốn xóa thành viên có tên nhóm là: <span class="text-danger">{{$userCatalogue->name}}</span></p>
+                        <p>Bạn muốn xóa nhóm thành viên có tên là: <span class="text-danger">{{$userCatalogue->name}}</span></p>
                         <p>Lưu ý .Xóa là không thể khôi phục tên nhóm thành viên sau khi xóa.Hãy chắc chắn trước khi xóa.</p>
                     </div>
                 </div>

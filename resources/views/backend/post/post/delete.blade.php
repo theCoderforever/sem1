@@ -1,4 +1,4 @@
-@include('backend.dashboard.component.breadcrumb', ['title' => $config['seo']['create']['title']])
+@include('backend.dashboard.component.breadcrumb', ['title' => $config['seo']['delete']['title']])
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -18,8 +18,8 @@
                 <div class="panel-head">
                     <div class="panel-title">Thông tin chung</div>
                     <div class="panel-description">
-                        <p>Bạn muốn xóa ngôn ngữ có tên nhóm là: <span class="text-danger">{{$post->name}}</span></p>
-                        <p>Lưu ý .Xóa là không thể khôi phục tên nhóm bài viết sau khi xóa.Hãy chắc chắn trước khi xóa.</p>
+                        <p>Bạn muốn xóa bài viết có tên là: <span class="text-danger">{{$post->name}}</span></p>
+                        <p>Lưu ý .Xóa là không thể khôi phục tên  bài viết sau khi xóa.Hãy chắc chắn trước khi xóa.</p>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                         <div class="row mb10">
                             <div class="col-lg-12">
                                 <div class="form-row">
-                                    <label for="" class="control-label text-right">Tên nhóm <span class="text-danger">(*)</span></label>
+                                    <label for="" class="control-label text-right">Tên bài viết <span class="text-danger">(*)</span></label>
                                     <input type="text" readonly name="name" value="{{old('name', ($post->name) ?? '')}}" class="form-control" placeholder="" autocomplete="off">
                                 </div>
                             </div>

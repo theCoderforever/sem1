@@ -16,14 +16,23 @@ class BannerController extends Controller
 
     public function index()
     {
-        // $auth = $this->authorize('modules', 'banner.index');
+        $auth = $this->authorize('modules', 'banner.index');
        
 
         $config = $this->indexConfig();
 
         $config['seo'] = __('messages.banner');
 
-        $banner = Banner::all();
+        if(!empty(request()->keyword)) 
+        {
+           $banner = Banner::where('name', request()->keyword)->get();
+
+        }else{
+            $banner = Banner::all();
+        }
+       
+
+        // xu ly where 
 
         $template = 'backend.banner.index';
 
@@ -33,6 +42,9 @@ class BannerController extends Controller
 
     public function create() 
     {
+
+        $auth = $this->authorize('modules', 'banner.create');
+
         $config = $this->configData();
         // $banner = Banner::all();
         $config['method']= 'create';
@@ -67,6 +79,9 @@ class BannerController extends Controller
     }
     public function edit(Request $request, $id)
     {
+
+        $auth = $this->authorize('modules', 'banner.edit');
+
         
         $banner = Banner::where('id', $id)->get()->first();
       
@@ -114,6 +129,8 @@ class BannerController extends Controller
 
     public function delete($id)
     {
+
+        $auth = $this->authorize('modules', 'banner.delete');
 
         $banner = Banner::find($id);
 

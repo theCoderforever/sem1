@@ -1,4 +1,4 @@
-@include('backend.dashboard.component.breadcrumb', ['title' => $config['seo']['create']['title']])
+@include('backend.dashboard.component.breadcrumb', ['title' => $config['seo']['delete']['title']])
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -18,7 +18,7 @@
                 <div class="panel-head">
                     <div class="panel-title">{{__('messages.generalTitle')}}</div>
                     <div class="panel-description">
-                        <p>{{__('messages.areyousure')}} <span class="text-danger">{{$postcatalogue->name}}</span></p>
+                        <p>Bạn muốn xóa nhóm bài viết có tên là: <span class="text-danger">{{$postcatalogue->name}}</span></p>
                         <p>{{__('messages.warning_title')}}</p>
                     </div>
                 </div>

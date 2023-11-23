@@ -12,7 +12,7 @@
                             src="{{ asset(old('image', $catalogue->image ?? 'backend/img/myimage/no_image.png')) }}"
                             width="100%" alt="">
                     </span>
-                    <input type="hidden" name="image" value="{{ old('image', $catalogue->image ?? '') }}">
+                    <input type="hidden" name="image" value="{{ old('image', $catalogue->image ?? 'backend/img/myimage/no_image.png') }}">
 
                 </div>
             </div>

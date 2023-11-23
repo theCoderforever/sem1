@@ -1,6 +1,6 @@
 @php 
 
-    $url = ($config['method'] == 'create') ? route('catalogue.store') : route('catalogue.update', isset($catalogue->id))
+    $url = ($config['method'] == 'create') ? route('catalogue.store') : route('catalogue.update', ($catalogue->id))
 
 @endphp
 @include('backend.dashboard.component.breadcrumb', ['title' => $config['seo'][($config['method'] == 'create') ? 'create' : 'update']['title']])

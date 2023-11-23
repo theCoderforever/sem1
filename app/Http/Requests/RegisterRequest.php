@@ -23,8 +23,9 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' =>'required',
-            'email' => 'required|email',
-            'password' => 'required'
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
+            'confirmpassword'=>'required|same:password'
 
         ];
     }
@@ -34,8 +35,11 @@ class RegisterRequest extends FormRequest
         return [
             'name.required' => 'Bạn chưa nhập tên',
             'email.required' => 'Bạn chưa nhập email',
-            'email.email' => 'Email chưa đúng định dạng.Ví dụ: abc@gmail.com',
-            'password.required' => 'Bạn chưa nhập password'
+            'email.unique' => 'Email đã tồn tại',
+            'password.required' => 'Bạn chưa nhập password',
+            'confirmpassword.required'=> 'Bạn chưa nhập lại mật khẩu',
+            'confirmpassword.same'=> 'Xác thực mật khẩu lỗi',
+            
         ];
     }
 }

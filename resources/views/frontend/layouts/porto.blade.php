@@ -132,11 +132,15 @@
                         </div>
                         <!-- End .header-dropdowns -->
 
-                        @if (Auth::check()) 
+                        @if (Auth::guard('cus')->check()) 
                         
+                        {{Auth::guard('cus')->user()->name}}| 
+                        <a href="{{route('auth1.logout')}}" class="header-icon" title="logout">Logout</a>
+                        @elseif(Auth::check())
+
                         {{Auth::user()->name}}| 
-                        <a href="{{route('auth.logout')}}" class="header-icon" title="logout">Logout</a>
-                    
+                        <a href="{{route('auth1.logout')}}" class="header-icon" title="logout">Logout</a>
+
                     @else 
                         <a href="{{route('login.index')}}" class="header-icon" title="login">Login</a>  
                         <a href="{{route('register.index')}}" class="header-icon" title="login">Register</a>
@@ -305,9 +309,9 @@
                             </h5>
                             <p class="widget-newsletter-content mb-0">Get all the latest information on Events, Sales and Offers.</p>
                         </div>
-                        @if (Auth::check())
+                        @if (Auth::guard('cus')->check())
                         <?php 
-                        $sub = \App\Models\Subscriber::where('email', Auth::user()->email)->get()
+                        $sub = \App\Models\Subscriber::where('email', Auth::guard('cus')->user()->email)->get()
                          ?>
                         @if(count($sub) > 0)
                             <form action="{{ route('user.unsubscriber')}}" method="POST">
@@ -321,7 +325,7 @@
                             <form action="{{ route('user.subscriber')}}" method="POST">
                                 @csrf
                                 <div class="footer-submit-wrapper d-flex">
-                                    <input type="hidden" class="form-control" value="{{Auth::user()->email}}" name="email" placeholder="Email address..." size="40" >
+                                    <input type="hidden" class="form-control" value="{{Auth::guard('cus')->user()->email}}" name="email" placeholder="Email address..." size="40" >
                                     <button type="submit" class="btn btn-danger btn-sm">Subscribe</button>
                                 </div>
                             </form>

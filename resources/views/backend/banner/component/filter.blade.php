@@ -18,19 +18,7 @@
           </div>
           <div class="action">
               <div class="uk-flex uk-flex-middle">
-                @php    
-              
-
-                 $publish = request('publish') ?: old('publish');
-
-
-                @endphp
-                <select name="publish" class="form-control mr-10 setupSelect2"  id="">
-                      @foreach(__('messages.publish') as $key => $val)
-                      <option {{ ($publish == $key)  ? 'selected' : ''}} value="{{$key}}">{{$val}}</option>
-                      @endforeach
-                  </select>
-                
+               
                   <div class="uk-search uk-flex uk-flex-middle mr10">
                       <div class="input-group">
                           <input type="text" name="keyword" value="{{ request('keyword') ?: old('keyword')}}"

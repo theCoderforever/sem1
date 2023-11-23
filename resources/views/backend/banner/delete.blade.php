@@ -18,7 +18,7 @@
                 <div class="panel-head">
                     <div class="panel-title">{{__('messages.generalTitle')}}</div>
                     <div class="panel-description">
-                        <p>Bạn muốn xóa banner có tên nhóm là:<span class="text-danger">{{$banner->name}}</span></p>
+                        <p>Bạn muốn xóa banner có tên là:<span class="text-danger">{{$banner->name}}</span></p>
                         <p>Lưu ý: Xóa là không thể khôi phục tên banner sau khi xóa.Hãy chắc chắn trước khi xóa.</p>
                     </div>
                 </div>

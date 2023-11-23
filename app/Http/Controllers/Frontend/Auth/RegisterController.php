@@ -21,11 +21,15 @@ class RegisterController extends Controller
     }
 
     public function UserRegister(RegisterRequest $request)
-    {
-        // dd($request->all());
-  
-        User::create($request->all());
-        return redirect()->route('login.index');
-        // return view('frontend.account.register');
+    { 
+       $create = User::create($request->all());
+
+        if ($create) {
+            return redirect()->route('login.index')->with('success', 'Đăng ký thành công');
+
+        }else {
+        return redirect()->back()->with('error', 'Đăng ký thất bại'); 
+
+        }
     }
 }

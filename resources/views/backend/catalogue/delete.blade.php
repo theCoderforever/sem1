@@ -1,4 +1,4 @@
-@include('backend.dashboard.component.breadcrumb', ['title' => $config['seo']['create']['title']])
+@include('backend.dashboard.component.breadcrumb', ['title' => $config['seo']['delete']['title']])
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -18,8 +18,8 @@
                 <div class="panel-head">
                     <div class="panel-title">{{__('messages.generalTitle')}}</div>
                     <div class="panel-description">
-                        <p>{{__('messages.areyousure')}} <span class="text-danger">{{$catalogue->name}}</span></p>
-                        <p>{{__('messages.warning_title')}}</p>
+                        <p>Bạn muốn xóa thuộc tính có tên là <span class="text-danger">{{$catalogue->name}}</span></p>
+                        <p>Lưu ý .Xóa là không thể khôi phục thuộc tính sau khi xóa.Hãy chắc chắn trước khi xóa.</p>
                     </div>
                 </div>
             </div>
