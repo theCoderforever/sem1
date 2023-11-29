@@ -241,7 +241,7 @@ Route::group(['prefix' => 'frontend'], function() {
 
     // ACCOUNT
     Route::get('/login', [LoginController::class, 'index'])->name('login.index');
-    Route::post('/login', [LoginController::class, 'Userlogin']);
+    Route::post('/login', [LoginController::class, 'userlogin'])->name('post.login');
     Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
     Route::post('/register', [RegisterController::class, 'UserRegister']);
     // Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
@@ -253,6 +253,6 @@ Route::group(['prefix' => 'frontend'], function() {
     Route::post('/unsubscriber', [UserSubscriberController::class, 'unsubscriber'])->name('user.unsubscriber');
 
     //productdetail
-    // Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('auth1.logout');
     
 });

@@ -1,6 +1,6 @@
 @php 
 
-    $url = ($config['method'] == 'create') ? route('catalogue.store') : route('catalogue.update', ($catalogue->id))
+    $url = ($config['method'] == 'create') ? route('banner.store') : route('banner.update', $banner->id)
 
 @endphp
 @include('backend.dashboard.component.breadcrumb', ['title' => $config['seo'][($config['method'] == 'create') ? 'create' : 'update']['title']])
@@ -15,7 +15,7 @@
     </div>
 @endif
 
-<form action="{{ $url }}" method="post" class="box">
+<form action="{{ $url }}" method="post" class="box" enctype="multipart/form-data">
     @csrf
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
@@ -28,13 +28,13 @@
                     </h5>
                 </div>
                 <div class="ibox-content">
-                    @include('backend.catalogue.component.general')
+                    @include('backend.banner.component.general')
                 </div>
                </div>
-               @include('backend.dashboard.component.album')
+               {{-- @include('backend.dashboard.component.album') --}}
             </div>
             <div class="col-lg-3">
-              @include('backend.catalogue.component.aside')
+              @include('backend.banner.component.aside')
             </div>
 
               

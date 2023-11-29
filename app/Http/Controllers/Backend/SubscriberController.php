@@ -19,6 +19,7 @@ class SubscriberController extends Controller
 
 
     //    $auth = $this->authorize('modules', 'catalogue.index');
+    $auth = $this->authorize('modules', 'subscriber.index');
        
       
         $config = $this->indexConfig();
@@ -31,23 +32,11 @@ class SubscriberController extends Controller
     }
 
 
-    public function create()
-    {
-
-        $this->authorize('modules', 'catalogue.create');
-
-        $config = $this->configData();
-        // $list = Catalogue::all();
-        
-
-        $config['method']= 'create';
-        $template = 'backend.catalogue.store';
-        $config['seo'] = __('messages.catalogue');
-        return view('backend.dashboard.layout', compact('template', 'config'));
-
-    }
-
+  
     public function delete(Request $request) {
+        $auth = $this->authorize('modules', 'subscriber.delete');
+        
+        
         $config = $this->configData();
         $sub = Subscriber::find($request->id);
         // dd($sub);
@@ -67,86 +56,7 @@ class SubscriberController extends Controller
         return redirect()->route('subscriber.index')->with('success', 'xoá thành công');
        }
 
-    public function store(StoreCatalogueRequest $request)
-    {
-
-
-        
-        // if($this->catalogueService->create($request)) {
-        //     return redirect()->route('catalogue.index')->with('success', 'Thêm mới bản ghi thành công');
-        // }else {
-        //     return redirect()->route('catalogue.index')->with('error', 'Thêm mới bản ghi không thành công.Hãy thử lại');
- 
-        // }
-    }
-
-
-    // public function edit($id) 
-    // {
-
-    //     $this->authorize('modules', 'catalogue.edit');
-
-    //     $catalogue = $this->catalogueService->show($id);
-
-
-    //     $list = Catalogue::all();
-
-
-    //     $albums =  isset($catalogue->album) ?  json_decode($catalogue->album) : '';
-      
-    //     $config = $this->configData();
-
-    //     $config['method']= 'edit';
-
-    //     $template = 'backend.catalogue.store';
-    //     $config['seo'] = __('messages.catalogue');
-
-
-
-    //     return view('backend.dashboard.layout', compact('template', 'config', 'catalogue', 'list', 'id', 'albums'));
-       
-    // }
-
-    // public function update(UpdateCatalogueRequest $request, $id)
-    // {
-      
-
-    //     if($this->catalogueService->update($id, $request)) {
-    //         return redirect()->route('catalogue.index')->with('success', 'Cập nhật bản ghi thành công');
-    //     }else {
-    //         return redirect()->route('catalogue.index')->with('error', 'Cập nhật bản ghi không thành công.Hãy thử lại');
- 
-    //     }
-
-    // }
-
-    // public function delete($id) 
-    // {
-
-    //     // $this->authorize('modules', 'catalogue.delete');
-
-    //     // $catalogue = $this->catalogueRepository->edit($id);
-
-        
-    //     $template = 'backend.subscriber.delete';
-    //     $config['seo'] = __('messages.subscriber');
-
-    //     return view('backend.dashboard.layout', compact('template', 'config'));
-    // }
-
-    // public function destroy(Request $request, $id) 
-    // {
-    //     // if($this->catalogueRepository->delete($id)) {
-    //     //     return redirect()->route('catalogue.index')->with('success', 'Xóa bản ghi thành công');
-    //     // }else {
-    //     //     return redirect()->route('catalogue.index')->with('error', 'Xóa bản ghi không thành công.Hãy thử lại');
- 
-    //     // }
-    //     $cate = $request->find($id);
-    //     $cate->delete();
-    //     return redirect()->route('backend.dashboard.layout');
-    // }
-
+   
     private function configData() 
     {
         return [

@@ -1,4 +1,4 @@
-@include('backend.dashboard.component.breadcrumb', ['title' => $config['seo']['create']['title']])
+@include('backend.dashboard.component.breadcrumb', ['title' => $config['seo']['delete']['title']])
 
 
 <form action="{{ route('order.destroy',( $order->id) ?? null) }}" method="post" class="box">
@@ -10,7 +10,7 @@
                 <div class="panel-head">
                     <div class="panel-title">Thông tin chung</div>
                     <div class="panel-description">
-                        <p>Bạn muốn đơn hàng  là: <span class="text-danger">{{$order->name}}</span></p>
+                        <p>Bạn muốn xóa đơn hàng  là: <span class="text-danger">{{$order->name}}</span></p>
                         <p>Lưu ý .Xóa là không thể khôi phục đơn hàng sau khi xóa.Hãy chắc chắn trước khi xóa.</p>
                     </div>
                 </div>

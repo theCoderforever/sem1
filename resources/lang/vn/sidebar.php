@@ -40,7 +40,7 @@ return [
             'name' => ['user', 'permission'],
             'subModule' => [
                 [
-                    'title' => "QLnhóm thành viên",
+                    'title' => "QL nhóm thành viên",
                     'route' => "user/catalogue/index"
                 ],
                 [
@@ -55,7 +55,7 @@ return [
         ],
         [
             'title' => "QL Đơn Hàng",
-            'icon' => "fa fa-th-large",
+            'icon' => "fa fa-flask",
             'name' => ['order'],
             'subModule' => [
                 [
@@ -68,12 +68,12 @@ return [
         ],
         [
             'title' => "QL Banner",
-            'icon' => "fa fa-th-large",
-            'name' => ['banners'],
+            'icon' => "fa fa-bar-chart-o",
+            'name' => ['banner'],
             'subModule' => [
                 [
                     'title' => "QL Banner",
-                    'route' => "order/index"
+                    'route' => "banner/index"
                 ],
               
                
@@ -81,7 +81,7 @@ return [
         ],
         [
             'title' => "QL Subscriber",
-            'icon' => "fa fa-th-large",
+            'icon' => "fa fa-desktop",
             'name' => ['subscriber'],
             'subModule' => [
                 [
@@ -94,7 +94,7 @@ return [
         ],
         [
             'title' => "QL Mã giảm giá",
-            'icon' => "fa fa-th-large",
+            'icon' => "fa fa-diamond",
             'name' => ['coupons'],
             'subModule' => [
                 [

@@ -92,7 +92,9 @@ class CatalogueService extends BaseService implements CatalogueServiceInterface
             $catalogue = $this->catalogueRepository->edit($id);
 
             $payload = $this->payloadData($request);
+
             
+            // dd($payload);
             $flag = $this->catalogueRepository->update($id, $payload);
 
 

@@ -85,8 +85,7 @@ class BaseRepository implements BaseRepositoryInterface
     {
         
         $model = $this->findIdUpdate($id);
-
-
+       
         $fal = $model->update($payload);
 
         return $model->update($payload);

@@ -9,7 +9,7 @@
     </div>
 @endif
 
-<form action="{{ route('post.catalogue.destroy', $postcatalogue->id) }}" method="post" class="box">
+<form action="{{ route('banner.destroy', $banner->id) }}" method="post" class="box">
     @csrf
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
@@ -18,8 +18,8 @@
                 <div class="panel-head">
                     <div class="panel-title">{{__('messages.generalTitle')}}</div>
                     <div class="panel-description">
-                        <p>Bạn muốn xóa nhóm bài viết có tên là: <span class="text-danger">{{$postcatalogue->name}}</span></p>
-                        <p>{{__('messages.warning_title')}}</p>
+                        <p>Bạn muốn xóa banner có tên là:<span class="text-danger">{{$banner->name}}</span></p>
+                        <p>Lưu ý: Xóa là không thể khôi phục tên banner sau khi xóa.Hãy chắc chắn trước khi xóa.</p>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                             <div class="col-lg-12">
                                 <div class="form-row">
                                     <label for="" class="control-label text-right">{{__('messages.tableName')}} <span class="text-danger">(*)</span></label>
-                                    <input type="text" readonly name="name" value="{{old('name', ($postcatalogue->name) ?? '')}}" class="form-control" placeholder="" autocomplete="off">
+                                    <input type="text" readonly name="name" value="{{old('name', ($banner->name) ?? '')}}" class="form-control" placeholder="" autocomplete="off">
                                 </div>
                             </div>
                            

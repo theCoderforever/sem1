@@ -38,7 +38,7 @@
                 </div>
                 <div class="main-info">
                     <div class="name">
-                        <a href="" class="main-a-name">{{$key->name}}</a>
+                        <a href="javascript:void" class="main-a-name">{{$key->name}}</a>
                     </div>
                     <div class="catalogue mt10">
                         <span class="text-danger">
