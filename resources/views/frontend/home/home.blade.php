@@ -186,7 +186,12 @@
                         <div class="dropdown cart-dropdown">
                             <a href="#" title="Cart" class="dropdown-toggle dropdown-arrow cart-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <i class="minicart-icon"></i>
-                                <span class="cart-count badge-circle">3</span>
+                                @if(Session::has("Cart") != null)
+                                    <span id="cart_count_total" class="cart-count badge-circle">{{Session::get("Cart")->totalQuanty}}</span>
+                                @else
+                                    <span id="cart_count_total" class="cart-count badge-circle">0</span>
+                                @endif
+                                
                             </a>
 
                             <div class="cart-overlay"></div>
@@ -198,81 +203,36 @@
                                     <div class="dropdown-cart-header">Shopping Cart</div>
                                     <!-- End .dropdown-cart-header -->
 
-                                    <div class="dropdown-cart-products">
-                                        <div class="product">
-                                            <div class="product-details">
-                                                <h4 class="product-title">
-                                                    <a href="{{route('product-detail.index')}}">Ultimate 3D Bluetooth Speaker</a>
-                                                </h4>
+                                <div id="change_item_cart">
+                                @if(Session::has("Cart") != null)
+                                <div class="dropdown-cart-products">
+                                        @foreach (Session::get("Cart")->products as $item)
+                                            <div class="product">
+                                                <div class="product-details">
+                                                    <h4 class="product-title">
+                                                        <a href="{{route('product-detail.index')}}">{{$item['productInfo']->name}}</a>
+                                                    </h4>
 
-                                                <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span> × $99.00
-                                                </span>
+                                                    <span class="cart-product-info">
+                                                        <span class="cart-product-qty">{{$item['quanty']}}</span> × {{$item['productInfo']->price}}
+                                                    </span>
+                                                </div>
+                                                <!-- End .product-details -->
+
+                                                <figure class="product-image-container">
+                                                    <a href="{{route('product-detail.index')}}" class="product-image">
+                                                        <img src="{{asset($item['productInfo']->image)}}" alt="product" width="80" height="80">
+                                                    </a>
+
+                                                    <a href="#" class="btn-remove" title="Remove Product"><span data-idcart="{{$item['productInfo']->id}}" >×</span></a>
+                                                </figure>
                                             </div>
-                                            <!-- End .product-details -->
-
-                                            <figure class="product-image-container">
-                                                <a href="{{route('product-detail.index')}}" class="product-image">
-                                                    <img src="assets/images/products/product-1.jpg" alt="product" width="80" height="80">
-                                                </a>
-
-                                                <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
-                                            </figure>
-                                        </div>
-                                        <!-- End .product -->
-
-                                        <div class="product">
-                                            <div class="product-details">
-                                                <h4 class="product-title">
-                                                    <a href="{{route('product-detail.index')}}">Brown Women Casual HandBag</a>
-                                                </h4>
-
-                                                <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span> × $35.00
-                                                </span>
-                                            </div>
-                                            <!-- End .product-details -->
-
-                                            <figure class="product-image-container">
-                                                <a href="{{route('product-detail.index')}}" class="product-image">
-                                                    <img src="assets/images/products/product-2.jpg" alt="product" width="80" height="80">
-                                                </a>
-
-                                                <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
-                                            </figure>
-                                        </div>
-                                        <!-- End .product -->
-
-                                        <div class="product">
-                                            <div class="product-details">
-                                                <h4 class="product-title">
-                                                    <a href="{{route('product-detail.index')}}">Circled Ultimate 3D Speaker</a>
-                                                </h4>
-
-                                                <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span> × $35.00
-                                                </span>
-                                            </div>
-                                            <!-- End .product-details -->
-
-                                            <figure class="product-image-container">
-                                                <a href="{{route('product-detail.index')}}" class="product-image">
-                                                    <img src="assets/images/products/product-3.jpg" alt="product" width="80" height="80">
-                                                </a>
-                                                <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
-                                            </figure>
-                                        </div>
-                                        <!-- End .product -->
+                                        @endforeach
+                                        <h5>tổng giá: $ {{Session::get("Cart")->totalPrice}}</h5>
+                                <!-- End .product -->
+                                </div>
+                                @endif
                                     </div>
-                                    <!-- End .cart-product -->
-
-                                    <div class="dropdown-cart-total">
-                                        <span>SUBTOTAL:</span>
-
-                                        <span class="cart-total-price float-right">$134.00</span>
-                                    </div>
-                                    <!-- End .dropdown-cart-total -->
-
                                     <div class="dropdown-cart-action">
                                         <a href="{{route('cart.index')}}" class="btn btn-gray btn-block view-cart">View
                                             Cart</a>
@@ -378,7 +338,7 @@
                                                 
                                             </a>
                                             <div class="btn-icon-group">
-                                                <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
+                                                <a onclick="AddCart({{$item->id}})" href="javascript:" class="btn-icon btn-add-cart "><i
                                                         class="icon-shopping-cart"></i></a>
                                             </div>
                                             {{-- <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View</a> --}}
@@ -1172,7 +1132,53 @@
 
     <!-- Main JS File -->
     <script src="assets/js/main.min.js"></script>
-<script>(function(){var js = "window['__CF$cv$params']={r:'816905095e42b442',t:'MTY5NzM4Mjk1MC4xOTEwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='../../cdn-cgi/challenge-platform/h/g/scripts/jsd/dffb14d6/main.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script></body>
+    <script>(function(){var js = "window['__CF$cv$params']={r:'816905095e42b442',t:'MTY5NzM4Mjk1MC4xOTEwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='../../cdn-cgi/challenge-platform/h/g/scripts/jsd/dffb14d6/main.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script></body>
+    !-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
+
+<script>
+    // AddCart();
+    function AddCart(id){
+        $.ajax({
+            url: "/frontend/addcart/"+id,
+            type: "GET"
+        }).done(function(res) {
+            RenderCart(res);
+            alertify.success('thêm mới thành công');
+        });
+    }
+    $('#change_item_cart').on("click", ".btn-remove span",function(){
+      
+        $.ajax({
+            url: "/frontend/delete-addcart/"+ $(this).data("idcart"),
+            type: "GET"
+        }).done(function(res) {
+            RenderCart(res);
+            alertify.success('đã xóa thành công');
+        });
+    })
+    function RenderCart(res){
+        if (res){
+            $("#change_item_cart").empty();
+            $("#change_item_cart").html(res);
+            $("#cart_count_total").text($("#total_item_cart").val());
+        }
+
+       if($("#total_item_cart").val() == undefined){
+            $("#change_item_cart").empty();
+            $("#cart_count_total").text('0');
+        }
+    }
+</script>
 <!-- Mirrored from portotheme.com/html/porto_ecommerce/demo18.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 15 Oct 2023 15:16:29 GMT -->
 </html>

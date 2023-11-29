@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
+use App\Cart;
+use Session;
+
 // use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -57,5 +60,16 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrap();
+      
+        // dd($tt);
+        // if(Session::has("Cart") != null){
+            View::composer('frontend.layouts.porto', function ($view) {
+                $oldcart = Session('Cart') ? Session('Cart') : null;
+                $newcart = new Cart($oldcart);        
+                $tt = $newcart->totalQuanty;
+                $view->with('totalQuanty',$tt);
+            });
+        // }
+       
     }
 }

@@ -106,7 +106,7 @@
                                     height="205')}}" alt="product">
                                 </a>
                                 <div class="btn-icon-group">
-                                    <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
+                                    <a onclick="AddCart({{$item->id}})" href="javascript:" class="btn-icon btn-add-cart "><i
                                         class="icon-shopping-cart"></i></a>
                                 </div>
                             </figure>

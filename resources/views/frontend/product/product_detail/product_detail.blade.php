@@ -104,11 +104,11 @@
                                 @csrf
                                 <input type="hidden" name="id" value="">
                                 <div class="product-single-qty">
-                                    <input class="horizontal-quantity form-control" name="quantity" type="text" value="1">
+                                    <input class="horizontal-quantity hihi form-control" name="quantity" type="text" value="1">
                                 </div>
                                 <!-- End .product-single-qty -->
 
-                                <button type="submit"  class="btn btn-dark  icon-shopping-cart mr-2" title="Add to Cart">Add to Cart</button type="submit">
+                                <a href="javascript:" data-id="{{$product->id}}" class="btn btn-dark  icon-shopping-cart mr-2" title="Add to Cart">Add to Cart</a>
                             </form>
                                 {{-- <a href="{{route('cart.index')}}" class="btn btn-gray view-cart d-none">View cart</a> --}}
                             </div>

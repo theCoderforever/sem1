@@ -218,6 +218,13 @@ Route::group(['prefix' => 'frontend'], function() {
 
     // CART
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::get('/addcart/{id}', [CartController::class, 'addcart'])->name('cart.add');
+    Route::get('/delete-addcart/{id}', [CartController::class, 'DeleteItemCart'])->name('cart.delete');
+    Route::get('/delete-list-addcart/{id}', [CartController::class, 'DeleteListItemCart'])->name('cart.deletelist');
+    Route::get('/save-list-addcart/{id}/{quanty}', [CartController::class, 'SaveListItemCart'])->name('cart.save');
+    Route::post('/save-all', [CartController::class, 'SaveAllListItemCart'])->name('cart.saveall');
+    Route::get('/remove-all', [CartController::class, 'RemoveAllListItemCart'])->name('cart.removeall');
+    Route::get('/detailt-addcart/{id}/{quanty}', [CartController::class, 'AddDetailCart'])->name('cart.adddetail');
 
 
 
